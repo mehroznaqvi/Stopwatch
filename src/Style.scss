@@ -2,6 +2,15 @@ $bgcolor: #F5F8FB;
 body{
     margin: 0px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+    font-size: 72px;
+}
+p{
+    color: #F29E26;
+    font-size: 16px;
+    font-weight: 600;
 }
 .background-style{
     background-color: $bgcolor;
@@ -9,5 +18,31 @@ body{
 }
 .button-style
 {
+    height: 80px;
+    width: 80px;
     border-radius: 50%;
+    border-style: none;
+    background-color: #18A69D;
+    color: white;
+    padding: 20px;
+    margin: 0px 10px 0px 10px
+
+}
+.button-style:focus
+{
+    outline: none;
+}
+.button-style-1
+{
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border-color:#ABABAB ;
+    color: #ABABAB;
+    padding: 20px;
+    margin: 0px 10px 0px 10px
+}
+.button-style-1:focus
+{
+    outline: none;
 }
