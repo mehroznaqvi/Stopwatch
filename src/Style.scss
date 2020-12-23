@@ -6,11 +6,13 @@ body{
 }
 h1{
     font-size: 72px;
+    padding-left: 10px;
 }
 p{
     color: #F29E26;
     font-size: 16px;
     font-weight: 600;
+    padding-left:10px ;
 }
 .background-style{
     background-color: $bgcolor;
@@ -45,4 +47,8 @@ p{
 .button-style-1:focus
 {
     outline: none;
+}
+.time-style
+{
+    
 }
