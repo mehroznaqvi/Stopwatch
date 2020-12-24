@@ -1,26 +1,67 @@
-import React, { Component } from "react";
+import React, { useState, useRef  } from "react";
 
-class StopWatch extends Component {
-handleAdd=()=>{
+const Timer = () => {
+
+  const [timer, setTimer] = useState(0)
+  const [isActive, setIsActive] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+  const increment = useRef(null)
+
+  const handleStart = () => {
+    setIsActive(true)
+    setIsPaused(true)
+    increment.current = setInterval(() => {
+      setTimer((timer) => timer + 1)
+    }, 1000)
+  }
+
+  const handlePause = () => {
+    clearInterval(increment.current)
+    setIsPaused(false)
+  }
+
+  const handleResume = () => {
+    setIsPaused(true)
+    increment.current = setInterval(() => {
+      setTimer((timer) => timer + 1)
+    }, 1000)
+  }
+
+  const handleReset = () => {
+    clearInterval(increment.current)
+    setIsActive(false)
+    setIsPaused(false)
+    setTimer(0)
+  }
+
+  const formatTime = () => {
+    const getSeconds = `0${(timer % 60)}`.slice(-2)
+    const minutes = `${Math.floor(timer / 60)}`
+    const getMinutes = `0${minutes % 60}`.slice(-2)
+    const getHours = `0${Math.floor(timer / 3600)}`.slice(-2)
+
+    return `${getHours} : ${getMinutes} : ${getSeconds}`
+  }
   
-}
-  
-  render() {
     return (
       <div className="background-style">
         <div className="time-style">
-          <h1><time>00:00:00:00</time></h1>
-         
+        <h1>{formatTime()}</h1>         
         </div>
-
         <p>SPLIT TIME</p>
-        <div>
-          <button className="button-style" onClick={this.handleAdd}>Start</button>
-          <button className="button-style-1">Split</button>
-          <button className="button-style-1">Reset</button>
+        <div className='buttons'>
+          {
+            !isActive && !isPaused ?
+              <button onClick={handleStart}>Start</button>
+              : (
+                isPaused ? <button onClick={handlePause}>Pause</button> :
+                  <button onClick={handleResume}>Resume</button>
+              )
+          }
+          <button onClick={handleReset} disabled={!isActive}>Reset</button>
         </div>
       </div>
     );
-  }
 }
-export default StopWatch;
+
+export default Timer;
