@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import "./Style.scss";
 
 //components
-import StopWatch from './components/timer';
+import Timer from "./components/timer";
 
 
 function App() {
-  return <StopWatch></StopWatch>;
+  return(
+    <Timer></Timer>
+
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
